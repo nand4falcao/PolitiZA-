@@ -1,0 +1,21 @@
+{
+  "name": "politiza-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && cp src/index.css dist/index.css && cp index.html dist/index.html",
+    "serve": "serve dist -l 8080",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "serve": "^14.2.8",
+    "typescript": "^5.7.0"
+  }
+}
