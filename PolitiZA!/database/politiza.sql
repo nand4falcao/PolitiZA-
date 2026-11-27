@@ -57,9 +57,6 @@ CREATE TABLE ato_politico (
     id_tipo INT NOT NULL,
     id_localizacao INT NOT NULL,
     id_fonte INT NOT NULL,
-    
-    CONSTRAINT chk_datas_ato
-	CHECK (data_fim IS NULL OR data_fim > data_inicio),
 
     CONSTRAINT fk_ato_tipo
         FOREIGN KEY (id_tipo)
@@ -148,14 +145,16 @@ CREATE TABLE favorito (
         ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
-SHOW TABLES;
+CREATE USER 'app_java'@'localhost'
+IDENTIFIED BY 'Politiza123!';
 
-SELECT
-    TABLE_NAME,
-    COLUMN_NAME,
-    CONSTRAINT_NAME,
-    REFERENCED_TABLE_NAME,
-    REFERENCED_COLUMN_NAME
-FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
-WHERE TABLE_SCHEMA = 'politiza'
-AND REFERENCED_TABLE_NAME IS NOT NULL;
+GRANT SELECT, INSERT, UPDATE
+ON politiza.usuario
+TO 'app_java'@'localhost';
+
+
+SHOW GRANTS FOR 'app_java'@'localhost';
+
+SELECT * FROM usuario;
+
+DROP TABLE usuario;
